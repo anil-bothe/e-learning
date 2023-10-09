@@ -3,24 +3,5 @@
 
 {% block content %} 
 
-    <table>
-        <thead>
-            <th>ID</th>
-            <th>Name</th>
-            <th>DOB</th>
-            <th>Action</th>
-        </thead>
-        <tbody>
-            {% for obj in students %}
-            <tr>
-                <td>{{obj.id}}</td>
-                <td>{{obj.name}}</td>
-                <td>{{obj.dob}}</td>
-                <td><a href="/edit/{{obj.id}}/">edit</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="/about/">about us</a>
+<h1>Index page</h1>
 {% endblock content %}

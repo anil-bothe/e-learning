@@ -1,8 +1,9 @@
 from django.urls import path
-from app.controllers.front_end import index, about, edit
+from app.controllers.front_end import index, about,signup, contact
 
 urlpatterns = [
-    path("", index),
-    path("edit/<int:student_id>/", edit),
-    path("about/", about)
+    path("", index, name="home"),
+    path("about/", about, name="about"),
+    path("signup/", signup, name="signup"),
+    path("contact/", contact, name="contact"),
 ]

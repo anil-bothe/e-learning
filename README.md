@@ -11,3 +11,7 @@ after create schema in model.py
 
 python manage.py makemigrations
 python manage.py migrate
+python manage.py createsuperuser
+
+# vaishnavi;
+- how to add multiple name in one fields

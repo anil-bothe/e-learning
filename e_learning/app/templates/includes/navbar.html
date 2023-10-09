@@ -1,0 +1,15 @@
+{% load static %}
+<nav id="navbar">
+    <div class="brand">
+        <img src="{% static 'img/logo.png' %}" width="50" alt="...">
+        <strong>E-Learning</strong>
+    </div>
+    <div class="navigation-list">
+        <ul>
+            <li><a class="nav-item" href="{% url 'home' %}">Home</a></li>
+            <li><a class="nav-item" href="{% url 'about' %}">About</a></li>
+            <li><a class="nav-item" href="{% url 'contact' %}">Contact</a></li>
+            <li><a class="navigation-signup-btn" href="{% url 'signup' %}">Signup</a></li>
+        </ul>
+    </div>
+</nav>
