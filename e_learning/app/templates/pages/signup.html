@@ -1,12 +1,43 @@
-{% extends "base.html" %}
-{% block css %}
-  
-{% endblock css %}
-{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
 
-<h1>Signup</h1>
+<div id="Signup-container">
+    <div id="signup-header">
+        <h1>Sign Up</h1>
+        <button type="button" class="me-2 mt-2 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div id="form-container">
+        <form id="signupForm" action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <div class="form-group">
+                        <label for="fname">First Name <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" name="fname" minlength="3" maxlength="10" placeholder="First name" required>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <div class="form-group">
+                        <label for="lname">Last Name <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" name="lname" minlength="1" maxlength="10" placeholder="Last name" required>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <div class="form-group">
+                        <label for="password">Password<span class="text-danger">*</span></label>
+                        <input class="form-control" type="password" name="password" minlength="4" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <div class="form-group">
+                        <label for="email">Email<span class="text-danger">*</span></label>
+                        <input class="form-control" type="email" name="email" minlength="4" placeholder="Email" required>
+                    </div>
+                </div>
+            </div>
 
-{% endblock content %}
-{% block js %}
-  
-{% endblock js %}
+            <input type="submit" value="Signup">
+        </form>
+    </div>
+</div>

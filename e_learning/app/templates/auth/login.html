@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login page{% endblock title %}
+{% load static %}
+{% block css %}
+{% endblock css %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="mt-2">
+        <h1 class="bold-font">Login Page</h1>
+        <h4 class="text-muted">{{msg}}</h4>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="email" class="form-control mb-2" placeholder="email" name="email" id="" required>
+        <input type="password" class="form-control mb-2" placeholder="password" name="password" id="" required>
+        <button type="submit" class="btn btn-outline-danger"> <i class="fa fa-key"></i> Sing In</button>
+    </form>
+    <a href="" class="float-end">Forget password?</a>
+</div>
+
+{% endblock content %}
+{% block js %}
+
+{% endblock js %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock title %}
+{% load static %}
+{% block css %}
+{% endblock css %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="mt-2">
+        <h1 class="bold-font">Hi, {{request.user}}</h1>
+        <h4 class="text-muted">Your profile summary</h4>
+    </div>
+    <ul>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, cum.</li>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, cum.</li>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, cum.</li>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, cum.</li>
+    </ul>
+    <a href="" class="float-end">Forget password?</a>
+</div>
+
+{% endblock content %}
+{% block js %}
+
+{% endblock js %}

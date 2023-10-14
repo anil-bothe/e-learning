@@ -1,0 +1,58 @@
+.slick-prev,
+.slick-next {
+  /* top: auto; */
+  right: 35px;
+  z-index: 10;
+}
+.slick-prev {
+  left: 30px;
+}
+.slick-next {
+  right: 30px;
+}
+.course-card {
+  position: relative;
+}
+.course-card:hover::after {
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  background-color: #00ccff5e;
+  animation: bg_animation 0.5s forwards;
+  overflow: hidden;
+}
+@keyframes bg_animation {
+  100% {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+.contact-us-heading{
+    margin-top: 80px;
+}

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}Admin - FAQs{% endblock title %}
+{% load static %}
+{% block css %}
+<style>
+    .action-delete, .action-edit {
+        text-decoration: none;
+        font-size: 20px;
+    }
+    .font-lg{
+        font-size: 20px;
+    }
+    .btn-custom-bg {
+        background-color: #d7f2fa;
+    }
+    .btn-custom-bg:hover {
+        background-color: #8bdaf1;
+    }
+</style>
+{% endblock css %}
+{% block content %}
+
+<div class="container mb-5 mt-3">
+    <div class="text-center mb-3">
+        <h1>FAQs List</h1>
+    </div>
+    <div class="d-flex justify-content-between">
+        <div class="d-flex gap-2">
+            <input type="search">
+            <a href="" class="float-end btn btn-sm btn-secondary"> <i class="fa fa-search"></i> Search</a>
+        </div>
+        <a href="" class="float-end px-4 d-flex gap-2 align-items-center btn btn-sm btn-custom-bg" data-bs-toggle="modal" data-bs-target="#addFaqModal"> <i class="font-lg fa fa-plus-circle"></i> New FAQ</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in faqs %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.question}}</td>
+                <td>{{i.answer}}</td>
+                <th>
+                    <div class="d-flex gap-3 align-items-center">
+                        <a class="action-edit" href=""><i class="text-secondary fa fa-pencil"></i> </a>
+                        <a data-id="{{i.id}}" class="action-delete" href="{% url 'faqs-destory' faq_id=i.id %}"><i class="text-danger fa fa-trash-o"></i> </a>
+                    </div>
+                </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+    </div>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="addFaqModal" tabindex="-1" aria-labelledby="addFaqModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-0 p-0 m-0">
+          <button type="button" class="me-2 mt-2 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body m-0 p-5">
+          <form action="" method="post">
+            {% csrf_token %}
+            <input class="mb-2" type="text" placeholder="question" name="question" id="">
+            <input class="mb-2" type="text" placeholder="answer" name="answer">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+{% block js %}
+  <script>
+    $(document).ready(function(){
+        $(".action-delete").click(function(){
+            Swal.fire({
+                title: 'Warning!',
+                text: 'Are you sure you want to delete this FAQ?',
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonColor:"#d33",
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Yes',
+                confirmCancelText: 'Cancel'
+            }).then(x => {
+                
+            })
+        })
+      })
+  </script>
+{% endblock js %}

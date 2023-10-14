@@ -1,10 +1,33 @@
 {% extends "base.html" %}
+{% block title %}About{% endblock title %}
+{% load static %}
 {% block css %}
-  <link rel="stylesheet" href="">
 {% endblock css %}
 {% block content %}
 
-<h1>about us</h1>
+<div class="container py-5">
+  
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{% static 'img/about_us.svg' %}" width="100%" alt="...">
+    </div>
+    <div class="col-md-6">
+      <div class="mt-2">
+        <h1 class="bold-font">Thanks for visiting!</h1>
+        <h4>We are here to help you achieve your career goals.</h4>
+    </div>
+    <p>We offer a wide variety of high-quality online courses on a variety of subjects, including business,
+        technology, and personal development. Our courses are taught by experienced and qualified
+        instructors, and they are designed to help you learn the skills you need to succeed in your personal
+        and professional life.</p>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-info"><i class="fa fa-home"></i> Home page</button>
+        <button class="btn btn-danger"> <i class="fa fa-book"></i> Start Learning</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}
 {% block js %}

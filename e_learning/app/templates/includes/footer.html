@@ -1,0 +1,9 @@
+{% load static %}
+<footer class="mt-5 footer">
+    <img src="{% static 'img/logo.svg' %}" width="100" alt="...">
+    <p class="bold-font mt-2">© {% now "Y" %} E-Learning, All Rights Reserved.</p>
+    <div class="align-items-center d-flex gap-2">
+        <a href="/" class="quick-link">Home</a>
+        <a href="{% url 'about' %}" class="quick-link">About Us</a>
+    </div>
+</footer>

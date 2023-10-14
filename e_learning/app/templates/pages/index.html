@@ -1,7 +1,247 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}Home{% endblock title %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 
-{% block content %} 
+{% endblock css %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-md-center m-0 p-0">
+        <div class="col-md-6">
+            <div id="carouselExampleIndicators" class="bg-dark carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'img/3.jpg' %}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'img/2.jpg' %}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="h-100 pt-4 d-flex justify-content-between flex-column">
+                <div class="mt-2">
+                    <h1 class="bold-font">Advance your career today!.</h1>
+                    <h4>Sign up for our free courses</h4>
+                </div>
+                <p>We offer a wide variety of high-quality online courses on a variety of subjects, including business,
+                    technology, and personal development. Our courses are taught by experienced and qualified
+                    instructors, and they are designed to help you learn the skills you need to succeed in your personal
+                    and professional life.</p>
+                <p>Ready to get started? Browse our course catalog today to find the right course for you.</p>
+                <div>
+                    <button class="btn btn-lg btn-outline-danger"><span class="bold-font">Let's Start Learning</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<h1>Index page</h1>
+    <!-- Products -->
+    <div class="text-center mt-5">
+        <h4 class="bold-font">Our courses</h4>
+    </div>
+    <div class="course-items mb-5">
+        <div class="card mx-2 course-card" data-id="1">
+            <img src="{% static 'img/course1.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Python | Full Stack</h5>
+                <p class="card-text">In this course we will learn Python, JavaScript, HTML, CSS, JQuery, Django & Much more.</p>
+            </div>
+        </div>
+        <div class="card mx-2 course-card" data-id="2">
+            <img src="{% static 'img/course2.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+        <div class="card mx-2 course-card" data-id="3">
+            <img src="{% static 'img/course3.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+        <div class="card mx-2 course-card" data-id="4">
+            <img src="{% static 'img/course3.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+        <div class="card mx-2 course-card" data-id="5">
+            <img src="{% static 'img/course3.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+        <div class="card mx-2 course-card" data-id="6">
+            <img src="{% static 'img/course3.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+        <div class="card mx-2 course-card" data-id="7">
+            <img src="{% static 'img/course3.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Us  -->
+    <div id="contactus" class="text-center contact-us-heading">
+        <h4 class="bold-font">Contact Us</h4>
+    </div>
+    <div class="mb-5 pb-5 pt-2 shadow-sm">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'img/contact_us.svg' %}" width="100%" alt="...">
+            </div>
+            <div class="col-md-6">
+                <form action="" class="needs-validation container" novalidate method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <div class="">
+                                <label for="fname" class="col-form-label">First Name<span class="text-danger">*</span></label>
+                                <div class="">
+                                  <input type="text" class="form-control form-control-sm" id="fname">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="">
+                                <label for="lname" class="col-form-label">Last Name<span class="text-danger">*</span></label>
+                                <div class="">
+                                  <input type="text" class="form-control form-control-sm" id="lname">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="">
+                                <label for="email" class="col-form-label">Email</label>
+                                <div class="">
+                                  <input type="email" class="form-control form-control-sm" id="email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="">
+                                <label for="mobile" class="col-form-label">Mobile<span class="text-danger">*</span></label>
+                                <div class="">
+                                  <input type="text" class="form-control form-control-sm" id="mobile">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <label for="message" class="col-form-label">Message<span class="text-danger">*</span></label>
+                            <textarea name="message" id="message" cols="30" rows="4" class="form-control form-control-sm"></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+       
+    </div>
+
+     <!-- Testimonial -->
+     <div class="text-center mt-5">
+        <h4 class="bold-font">Testimonial</h4>
+    </div>
+    <div class="testimonial-items mb-5">
+        <div class="d-flex gap-4 mx-2">
+            <img height="100" width="100" src="{% static 'img/course1.jpg' %}" style="object-fit: cover;" class="rounded-circle" alt="...">
+            <blockquote class="">Python Full Stack |  
+                <q>In this course we will learn Python, JavaScript, HTML, CSS, JQuery, Django & Much more.</q>
+            </blockquote>
+        </div>
+        <div class="d-flex gap-4 mx-2">
+            <img height="100" width="100" src="{% static 'img/course1.jpg' %}" style="object-fit: cover;" class="rounded-circle" alt="...">
+            <blockquote class="">Python Full Stack |  
+                <q>In this course we will learn Python, JavaScript, HTML, CSS, JQuery, Django & Much more.</q>
+            </blockquote>
+        </div>
+        <div class="d-flex gap-4 mx-2">
+            <img height="100" width="100" src="{% static 'img/course1.jpg' %}" style="object-fit: cover;" class="rounded-circle" alt="...">
+            <blockquote class="">Python Full Stack |  
+                <q>In this course we will learn Python, JavaScript, HTML, CSS, JQuery, Django & Much more.</q>
+            </blockquote>
+        </div>
+        <div class="d-flex gap-4 mx-2">
+            <img height="100" width="100" src="{% static 'img/course1.jpg' %}" style="object-fit: cover;" class="rounded-circle" alt="...">
+            <blockquote class="">Python Full Stack |  
+                <q>In this course we will learn Python, JavaScript, HTML, CSS, JQuery, Django & Much more.</q>
+            </blockquote>
+        </div>
+    </div>
+</div>
+
+  
+  
 {% endblock content %}
+{% block js %}
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.course-items').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            dots: true,
+            //speed: 300,
+            autoplay: true,
+            //centerMode: true,
+        });
+        $('.testimonial-items').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: true,
+            autoplay: true,
+            centerMode: true,
+        });
+
+        $(".course-card").click(function(){
+            let id = $(this).data("id");
+            window.location.href = "{% url 'course-details' course_id=123 %}".replace("123", id);
+        })
+    })
+</script>
+{% endblock js %}

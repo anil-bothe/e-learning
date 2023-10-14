@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock title %}
+{% load static %}
+{% block css %}
+{% endblock css %}
+{% block content %}
+
+<div class="container mb-5 mt-3">
+    <div class="text-center mb-3">
+        <h1>Dashboard</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <canvas id="myChart1"></canvas>
+        </div>
+        <div class="col-md-6 mb-3">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div class="line py-3"></div>
+        <div class="col-md-6 mb-3">
+            <canvas id="myChart3"></canvas>
+        </div>
+        <div class="col-md-6 mb-3">
+            <canvas id="myChart4"></canvas>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $("#file_upload").change(function (e) {
+            let $file = e.target.files[0];
+            let imgBlob = new Blob([$file]);
+            let imgtmpURL = window.URL.createObjectURL(imgBlob);
+            $("#preview").attr("src", imgtmpURL);
+        });
+
+        showGraph1();
+        showGraph2();
+        showGraph3();
+        showGraph4();
+
+    });
+
+</script>
+
+{% endblock js %}

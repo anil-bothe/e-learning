@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}OTP verification{% endblock title %}
+{% load static %}
+{% block css %}
+{% endblock css %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="mt-2">
+        <h1 class="bold-font">Thanks for Signup!</h1>
+        <h4 class="text-muted">Your account has been successfully created! </h4>
+    </div>
+    <form action="" class="mt-4" method="post">
+        {% csrf_token %}
+        <label for="" class="res-msg">{{msg}}</label>
+        <input type="text" name="otp" maxlength="6" class="form-control" minlength="6" placeholder="Please enter OTP"
+            required>
+        <div class="d-flex gap-2 mt-2">
+            <button class="btn btn-primary resend disabled"><span id="otp-timeout"></span> Resend</button>
+            <button class="btn btn-outline-danger" type="submit"> <i class="fa fa-send"></i> Verify & Continue</button>
+        </div>
+    </form>
+
+</div>
+
+{% endblock content %}
+{% block js %}
+<script>
+    $(document).ready(function () {
+        resendTimeout();
+        $(".resend").click(function () {
+            $(this).addClass("disabled");
+            $.ajax({
+                url: "{% url 'resend-otp' user_id=123 %}".replace("123", "{{user_id}}"),
+                method: "POST",
+                data: {
+                    csrfmiddlewaretoken: "{{csrf_token}}"
+                },
+                success: function (res) {
+                    $(".res-msg").text(res.msg).addClass("text-danger");
+                    resendTimeout();
+                }
+            })
+        })
+    })
+
+    function resendTimeout() {
+        var t = 6
+        const customInterval = setInterval(function () {
+            t--;
+            $("#otp-timeout").text(t)
+            if (t <= 0) {
+                clearInterval(customInterval);
+                $("#otp-timeout").text("").parent().removeClass("disabled");
+            }
+        }, 1000);
+    }
+</script>
+{% endblock js %}

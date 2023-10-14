@@ -1,16 +1,7 @@
-from django.db import models
 
 
-class Contact(models.Model):
-    name = models.CharField(max_length=50)
-    message = models.CharField(max_length=255)
-    email = models.EmailField()
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = 'contact'
-        managed = True
-        verbose_name = 'Contact'
-        verbose_name_plural = 'Contacts'
+from app.model.users import User
+from app.model.assets import Assets
+from app.model.contact import Contact
+from app.model.course import Chapter, CourseCategory, Course
+from app.model.faqs import Faqs
