@@ -23,6 +23,7 @@
 <div class="container mb-5 mt-3">
     <div class="text-center mb-3">
         <h1>FAQs List</h1>
+        <p class="text-danger">{{msg|safe}}</p>
     </div>
     <div class="d-flex justify-content-between">
         <div class="d-flex gap-2">
@@ -49,8 +50,8 @@
                 <td>{{i.answer}}</td>
                 <th>
                     <div class="d-flex gap-3 align-items-center">
-                        <a class="action-edit" href=""><i class="text-secondary fa fa-pencil"></i> </a>
-                        <a data-id="{{i.id}}" class="action-delete" href="{% url 'faqs-destory' faq_id=i.id %}"><i class="text-danger fa fa-trash-o"></i> </a>
+                        <a data-id="{{i.id}}" class="action-edit" href="javascript:void(0)"><i class="text-secondary fa fa-pencil"></i> </a>
+                        <a data-id="{{i.id}}" class="action-delete" href="javascript:void(0)"><i class="text-danger fa fa-trash-o"></i> </a>
                     </div>
                 </th>
             </tr>
@@ -74,14 +75,13 @@
   <div class="modal fade" id="addFaqModal" tabindex="-1" aria-labelledby="addFaqModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header border-0 p-0 m-0">
-          <button type="button" class="me-2 mt-2 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body m-0 p-5">
+        <div class="modal-body m-0 px-5 pt-2 pb-5">
+          <div class="text-end"><button type="button" class="me-2 mt-2 btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          <h4 class="p-0 m-0 mb-2">New FAQ</h4>
           <form action="" method="post">
             {% csrf_token %}
-            <input class="mb-2" type="text" placeholder="question" name="question" id="">
-            <input class="mb-2" type="text" placeholder="answer" name="answer">
+            <input class="form-control mb-2" type="text" placeholder="question" name="question" id="">
+            <input class="form-control mb-2" type="text" placeholder="answer" name="answer">
             <button type="submit" class="btn btn-primary">Save changes</button>
           </form>
         </div>
@@ -89,11 +89,31 @@
     </div>
   </div>
 
+    <!-- Edit -->
+    <div class="modal fade" id="editFaqModal" tabindex="-1" aria-labelledby="editFaqModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body m-0 px-5 pt-2 pb-5">
+            <div class="text-end"><button type="button" class="me-2 mt-2 btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <h4 class="p-0 m-0 mb-2">Update FAQ</h4>
+            <form id="edit-faq-form" action="" method="post">
+              {% csrf_token %}
+              <input class="form-control mb-2" type="text" placeholder="question" name="question" id="edit-question">
+              <input class="form-control mb-2" type="text" placeholder="answer" name="answer" id="edit-answer">
+              <button type="submit" class="btn btn-primary">Update changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
 {% endblock content %}
 {% block js %}
   <script>
     $(document).ready(function(){
         $(".action-delete").click(function(){
+          let $thisID = $(this).data("id");
             Swal.fire({
                 title: 'Warning!',
                 text: 'Are you sure you want to delete this FAQ?',
@@ -102,10 +122,31 @@
                 cancelButtonColor:"#d33",
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Yes',
-                confirmCancelText: 'Cancel'
-            }).then(x => {
-                
+                confirmCancelText: 'Cancel',
+            }).then(res => {
+              if (res.isConfirmed){
+                window.location.replace(`{% url 'faqs-destory' faq_id=123 %}`.replace('123', $thisID));
+              }
             })
+        });
+
+        $(".action-edit").click(function(){
+          let $faqID = $(this).data('id');
+          let $url = "{% url 'retrieve-faq' faq_id=123 %}".replace('123', $faqID);
+
+          $("#edit-faq-form").attr("action", $url);
+
+          $("#editFaqModal").modal("show");
+          $.ajax({
+            url: $url,
+            method: "GET",
+            data: {},
+            success: function(res){
+              //console.log(res)
+              $("#edit-question").val(res.question);
+              $("#edit-answer").val(res.answer);
+            }
+          })
         })
       })
   </script>

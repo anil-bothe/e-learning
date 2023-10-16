@@ -3,7 +3,7 @@ from app.controllers.front_end import index, about, course_details
 from app.controllers.admin.assets import upload
 from app.controllers.admin.dashboard import dashboard
 from app.controllers.admin.course import list as courses
-from app.controllers.admin.faqs import list as faqs, destroy as faqs_destroy
+from app.controllers.admin.faqs import list as faqs, destroy as faqs_destroy, retrive_faq
 from app.controllers.admin.users import list as users
 from app.controllers.admin.category import list as categories
 from app.controllers.auth import signup, otp_verification, resend_otp, user_logout, user_login, user_profile
@@ -33,6 +33,7 @@ urlpatterns += [
     path("user/admin/categories/", categories, name="category-list"),
     path("user/admin/courses/", courses, name="courses-list"),
     path("user/admin/faqs/", faqs, name="faqs-list"),
+    path("api/user/admin/faqs/<int:faq_id>/", retrive_faq, name="retrieve-faq"),
     path("user/admin/faqs/<int:faq_id>/delete/", faqs_destroy, name="faqs-destory"),
     path("user/admin/users/", users, name="users-list"),
 ]
